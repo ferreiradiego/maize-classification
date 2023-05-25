@@ -70,37 +70,37 @@ for ratio in train_ratio:
             df_train = create_dataframes(train_filenames, dataset_path)
             df_test = create_dataframes(test_filenames, dataset_path)
 
-            # Normalize the 'ratio_80a255_por_1a80' feature in the train and test datasets. The normalization threshold is specified
-            df_train, df_test = normalize_dataset(df_train, df_test, 'ratio_80a255_por_1a80', thresh_normalization)
+            # Normalize the 'ratio_80a255_to_1a80' feature in the train and test datasets. The normalization threshold is specified
+            df_train, df_test = normalize_dataset(df_train, df_test, 'ratio_80a255_to_1a80', thresh_normalization)
 
-            # Summarize the train dataframe by grouping it by qtde_graos and percentual_defeitos and calculating summary statistics to generate the model
+            # Summarize the train dataframe by grouping it by grain_quantity and defect_percentage and calculating summary statistics to generate the model
             df_train_model = summarize_train_data(df_train)
 
             # Call the function to calculate the average number of pixels per grain for the training dataset
             avg_pixels_1a255_per_grain = calculate_avg_pixels_per_grain(df_train)
 
             # Calculate number of grains
-            df_test['qtde_graos_calculado'] = df_test['npixels_1a255'].apply(calculate_number_of_grains, grain_avg = avg_pixels_1a255_per_grain)
+            df_test['calculated_grain_quantity'] = df_test['npixels_1a255'].apply(calculate_number_of_grains, grain_avg = avg_pixels_1a255_per_grain)
 
             # Estimate number of grains (in discrete values predefined)
-            df_test['qtde_graos_estimado'] = df_test['qtde_graos_calculado'].apply(estimate_number_of_grains)
+            df_test['estimated_grain_quantity'] = df_test['calculated_grain_quantity'].apply(estimate_number_of_grains)
 
             # Calculate the error between the actual and estimated values for the quantity of grains
-            df_test['erro_graos'] = df_test['qtde_graos_estimado'] - df_test['qtde_graos']
+            df_test['error_grain'] = df_test['estimated_grain_quantity'] - df_test['grain_quantity']
 
             # Estimate the percentage of defects in the test dataset based on the number of grains and ratio
-            df_test['percentual_defeitos_estimado'] = df_test.apply(lambda row: estimate_defect_percentage(row['qtde_graos'], 
-                                                                                                           row['ratio_80a255_por_1a80_normalizado'], df_train_model), axis=1)
+            df_test['estimated_defect_percentage'] = df_test.apply(lambda row: estimate_defect_percentage(row['grain_quantity'], 
+                                                                                                           row['normalized_ratio_80a255_to_1a80'], df_train_model), axis=1)
 
             # Calculate the error in the estimated defect percentage
-            df_test['erro_defeitos'] = df_test['percentual_defeitos_estimado'] - df_test['percentual_defeitos']
+            df_test['error_defects'] = df_test['estimated_defect_percentage'] - df_test['defect_percentage']
 
             # Select only the columns of interest to create a summarized dataframe with the classification results
-            classification_results_df = df_test[['qtde_graos', 'percentual_defeitos', 'qtde_graos_estimado', 'percentual_defeitos_estimado', 'erro_graos']].copy()
+            classification_results_df = df_test[['grain_quantity', 'defect_percentage', 'estimated_grain_quantity', 'estimated_defect_percentage', 'error_grain']].copy()
 
             # Check the quality (healthy or defective) according to the parameterized threshold
-            classification_results_df['qualidade'] = (classification_results_df['percentual_defeitos'].apply(check_quality, thresh)).astype(int)
-            classification_results_df['qualidade_estimado'] = (classification_results_df['percentual_defeitos_estimado'].apply(check_quality, thresh)).astype(int)
+            classification_results_df['quality'] = (classification_results_df['defect_percentage'].apply(check_quality, thresh)).astype(int)
+            classification_results_df['estimated_quality'] = (classification_results_df['estimated_defect_percentage'].apply(check_quality, thresh)).astype(int)
             
             # Iterate over each classification type and get the classification results
             for classification_type in classification_types:
