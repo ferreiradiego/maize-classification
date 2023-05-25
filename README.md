@@ -37,6 +37,17 @@ O código a ser carregado para o ESP-32 CAM é [aquisition_device](src/aquisitio
 
 Após obter as imagens das amostras, é aplicado o pré-processamento o qual prepara e rotula as imagens para a etapa de criação de modelos e da classificação. Na sequência são apresentadas as imagens resultantes do pré-processamento, sendo a imagem grayscale utilizada para a classificação.
 
+<!-- <div style="display: flex; justify-content: space-around;">
+    <figure>
+        <figcaption><strong>RGB example</strong></figcaption>
+        <img src="img/dataset/rgb/a1_100_1.jpg" alt="RGB example" style="width: auto; height: 270px;">
+    </figure>
+    <figure>
+        <figcaption><strong>Grayscale example</strong></figcaption>
+        <img src="img/dataset/gray/a1_100_1.jpg" alt="Grayscale example" style="width: auto; height: 270px;">
+    </figure>
+</div> -->
+
 <div style="display: flex; justify-content: space-around;">
     <figure>
         <figcaption><strong>RGB example</strong></figcaption>
