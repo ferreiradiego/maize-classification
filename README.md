@@ -15,10 +15,24 @@ Este projeto utiliza técnicas de processamento digital de imagens para a classi
 
 ### Obtenção das imagens para o [dataset](img/dataset/)
 
-<div>
-    <img src="img/aquisition_device/setup_frontView.jpg" alt="front view setup" width="" height="300">
-    <img src="img/aquisition_device/setup_topView.jpg" alt="top view setup" width="" height="300">
+As imagens ilustram o disposito de aquisição, sendo que os grãos sãos inseridos sobre o plano de fundo azul e o microcontrolador na parte superior captura a imagem a cada novo comando vindo por meio da Comunicação Serial.
+
+As dimensões da caixa são 30x30x30 cm, são utilizadas duas lâmpadas LED de 12 W para o sistema de iluminação.
+
+<div style="display: flex; justify-content: space-around;">
+    <figure>
+        <img src="img/aquisition_device/setup_frontView.jpg" alt="front view setup" width="" height="300">
+        <figcaption>Front View Setup</figcaption>
+    </figure>
+    <figure>
+        <img src="img/aquisition_device/setup_topView.jpg" alt="top view setup" width="" height="300">
+        <figcaption>Top View Setup</figcaption>
+    </figure>
 </div>
+
+O código a ser carregado para o ESP-32 CAM é [aquisition_device](src/aquisition_device/).
+
+### Installing
 
 ### Dependencies
 - Python 3.7+
@@ -34,7 +48,6 @@ Este projeto utiliza técnicas de processamento digital de imagens para a classi
 
 > You can install any missing dependencies with pip.
 
-### Installing
 Clone the GitHub repository and install the dependencies.
 
 bash
