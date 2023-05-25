@@ -49,40 +49,8 @@ O dataset possuem no total 1314 diferentes imagens, sendo que estão presentes e
 
 Os rotulos da images indentificam os percentuais de defeitos e a quantidade de grãos em cada amostra.
 
-<!-- <table style="width:100%; border:1px solid black;">
-    <caption>Descrição dos itens de cada rótulo de imagem</caption>
-    <thead>
-        <tr>
-            <th style="text-align:center; border:1px solid black;">Item</th>
-            <th style="text-align:center; border:1px solid black;">Descrição</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td style="border:1px solid black;">primeiro</td>
-            <td style="border:1px solid black;">
-                - a1 são amostras com 30% de grãos com defeitos<br>
-                - a2 são amostras com 25% de grãos com defeitos<br>
-                - a3 são amostras com 20% de grãos com defeitos<br>
-                - a4 são amostras com 15% de grãos com defeitos<br>
-                - a5 são amostras com 10% de grãos com defeitos<br>
-                - a6 até a11 são amostras com todos os grãos sadios
-            </td>
-        </tr>
-        <tr>
-            <td style="border:1px solid black;">segundo</td>
-            <td style="border:1px solid black;">Quantidade de grãos: 50, 60, 70, 80, 90 e 100</td>
-        </tr>
-        <tr>
-            <td style="border:1px solid black;">terceiro</td>
-            <td style="border:1px solid black;">Número da imagem, para cada percentual de defeito e quantidade de grãos têm-se 20 imagens. Amostras com grãos sadios têm quantidades variadas de imagens.</td>
-        </tr>
-    </tbody>
-</table> -->
-
-
 <table style="width:100%; border:1px solid black;">
-    <caption>Description of items for each image label</caption>
+    <caption><strong>Description of items for each image label</strong></caption>
     <thead>
         <tr>
             <th style="text-align:center; border:1px solid black;">Item</th>
