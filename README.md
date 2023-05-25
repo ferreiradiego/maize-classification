@@ -1,10 +1,14 @@
-## Machine Learning and Digital Image Processing Repository
-Welcome to our Machine Learning and Digital Image Processing Repository. This repository contains scripts, notebooks, and datasets used to develop and implement various machine learning models and digital image processing techniques.
+<!-- ## Machine Learning and Digital Image Processing Repository -->
+## Classificação de defeitos em amostras de grãos de milho Zea Mays
+<!-- Welcome to our Machine Learning and Digital Image Processing Repository. This repository contains scripts, notebooks, and datasets used to develop and implement various machine learning models and digital image processing techniques. -->
+Bem-vindo ao nosso repositório que aborda a classificação de grãos de milho utilizando PDI. Este repositório contém scripts, notebooks, um dataset e um código para aquisição de imagens utilizando um módulo ESP-32 CAM.
 
-### Description
-This project focuses on applying machine learning and digital image processing algorithms to real-world problems. It includes feature extraction, model training, model evaluation, image segmentation, and object detection techniques.
+<!-- ### Description -->
+### Descrição
+Este projeto utiliza técnicas de processamento digital de imagens para a classificação de grãos de milho da espécie Zea Mays por meio da coloração dos grãos.
 
-### Contents
+### Conteúdos
+<!-- ### Contents -->
 Scripts: Contains Python scripts for data preprocessing, model training and evaluation.
 Notebooks: Jupyter notebooks for exploratory data analysis, model development and data visualization.
 Data: The directory where the datasets used in this project are stored.
