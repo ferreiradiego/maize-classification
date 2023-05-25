@@ -71,9 +71,9 @@ def create_dataframes(filenames, path_to_images):
 
     df_gray = pd.concat(dfs_gray, ignore_index=True)
 
-    df_gray['ratio_80to255_to_1to80'] = df_gray['npixels_80to255']/df_gray['npixels_1to80']
-    ratio_good = df_gray.loc[df_gray['defect_percentage'] == 0.00, 'ratio_80to255_to_1to80'].mean()
-    df_gray['ratio_80to255_to_1to80'] /= ratio_good
+    df_gray['ratio_80to255_by_1to80'] = df_gray['npixels_80to255']/df_gray['npixels_1to80']
+    ratio_good = df_gray.loc[df_gray['defect_percentage'] == 0.00, 'ratio_80to255_by_1to80'].mean()
+    df_gray['ratio_80to255_by_1to80'] /= ratio_good
 
     df_gray['npixels_1to255_per_grain'] = (df_gray['npixels_1to255']/df_gray['grain_quantity']).astype(int)
 
@@ -95,7 +95,7 @@ def normalize_dataset(df_train, df_test, feature_name, ratio_to_be_filtered = 0.
 
     return df_train, df_test
 
-def summarize_train_data(df_train, groupby_cols=['grain_quantity', 'defect_percentage'], summary_col='normalized_ratio_80to255_to_1to80'):
+def summarize_train_data(df_train, groupby_cols=['grain_quantity', 'defect_percentage'], summary_col='normalized_ratio_80to255_by_1to80'):
     return df_train.groupby(groupby_cols)[summary_col].describe()[['mean', 'std']].reset_index()
 
 # Define a function to calculate the average number of pixels with values between 1 and 255 per grain
