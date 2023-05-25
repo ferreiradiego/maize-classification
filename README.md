@@ -1,13 +1,13 @@
-# Classificação de defeitos em amostras de grãos de milho Zea Mays
+# Classification of defects in Zea Mays corn grain samples
 
-Bem-vindo ao nosso repositório que aborda a classificação de grãos de milho utilizando PDI. Este repositório contém scripts, notebooks, um dataset e um código para aquisição de imagens utilizando um módulo ESP-32 CAM.
+Welcome to our repository which tackles corn grain classification using Digital Image Processing (DIP). This repository contains scripts, notebooks, a dataset, and a code for image acquisition using an ESP-32 CAM module.
 
-## Descrição
-Este projeto utiliza técnicas de processamento digital de imagens para a classificação de grãos de milho da espécie Zea Mays por meio da coloração dos grãos.
+## Description
+This project uses digital image processing techniques for the classification of corn grains of the Zea Mays species through the color of the grains.
 
-## Conteúdos
+## Contents
 
-### Listas de contéudos do repositório
+### Repository contents list
 
 <table style="width:100%; border:1px solid black;">
     <thead>
@@ -46,47 +46,11 @@ Este projeto utiliza técnicas de processamento digital de imagens para a classi
 </table>
 
 
-
-<!-- <table>
-  <tr>
-    <td align="center"> <strong>folder</strong> </td>
-    <td align="center"> <strong>content</strong> </td>
-  </tr>
-  <tr>
-    <td>img</td>
-    <td>
-        <ul>
-            <li>aquisition_device: imagens do dispositivo de aquisição</li>
-            <li>dataset: banco de dados de imagens, em tons de cinza e em rgb, ambas sem fundo</li>
-        </ul>
-    </td>
-  </tr>
-
-  <tr>
-    <td>src</td>
-    <td>
-        <ul>
-            <li>códigos em Python e Jupyter Notebook para pré-processamento, criação dos modelos e classificação das amostras </li>
-            <li><strong>aquisition_device</strong>: projeto do PlatformIo em C/C++ para carregar no ESP-32 CAM</li>
-            <li><strong>tools</strong>: funções diversas para o pré-processamento e para o código principal</li>
-        </ul>
-    </td>
-  </tr>
-
-  <tr>
-    <td>resources</td>
-    <td>
-        dataset em formato de dataframe e resultados da classificação
-    </td>
-  </tr>
-
-</table> -->
-
 ### Dataset
 
-O dataset possuem no total 1314 diferentes imagens, sendo que estão presentes em dois diferentes espaço de cores rgb (colorido) e grayscale.
+The dataset contains a total of 1314 different images, which are presented in two different color spaces: RGB (color) and grayscale.
 
-Os rotulos da images indentificam os percentuais de defeitos e a quantidade de grãos em cada amostra.
+The image labels identify the percentages of defects and the quantity of grains in each sample.
 
 <table style="width:100%; border:1px solid black;">
     <caption><strong>Description of items for each image label</strong></caption>
@@ -122,24 +86,11 @@ Os rotulos da images indentificam os percentuais de defeitos e a quantidade de g
 
 ## Getting Started
 
-### Obtenção das imagens para o [dataset](img/dataset/)
+### Acquisition of images for the [dataset](img/dataset/)
 
-As imagens ilustram o disposito de aquisição, sendo que os grãos sãos inseridos sobre o plano de fundo azul e o microcontrolador na parte superior captura a imagem a cada novo comando vindo por meio da Comunicação Serial.
+The images illustrate the acquisition device, where the grains are placed on the blue background, and the microcontroller at the top captures the image with each new command coming through Serial Communication.
 
-As dimensões da caixa são 30x30x30 cm, são utilizadas duas lâmpadas LED de 12 W para o sistema de iluminação.
-
-
-<!-- <div style="display: flex; justify-content: space-around;">
-    <figure>
-        <figcaption><strong>Front View Setup</strong></figcaption>
-        <img src="img/aquisition_device/setup_frontView.jpg" alt="Front View Setup" style="width: auto; height: 300px;">
-    </figure>
-    <figure>
-        <figcaption><strong>Top View Setup</strong></figcaption>
-        <img src="img/aquisition_device/setup_topView.jpg" alt="Top View Setup" style="width: auto; height: 300px;">
-    </figure>
-</div> -->
-
+The dimensions of the box are 30x30x30 cm. Two 12 W LED lamps are used for the lighting system
 
 <table>
   <tr>
@@ -151,7 +102,6 @@ As dimensões da caixa são 30x30x30 cm, são utilizadas duas lâmpadas LED de 1
     <td><img src="img/aquisition_device/setup_topView.jpg" alt="Top View Setup" style="width: auto; height: 300px;"></td>
   </tr>
 </table>
-
 
 
 O código a ser carregado para o ESP-32 CAM é [aquisition_device](src/aquisition_device/).
@@ -172,9 +122,10 @@ Após obter as imagens das amostras, é aplicado o pré-processamento o qual pre
 </table>
 
 
-## Installing
+## Installation
 
 ### Dependencies
+
 - Python 3.7+
 - [NumPy](https://numpy.org/)
 - [Pandas](https://pandas.pydata.org/)
@@ -189,23 +140,39 @@ Após obter as imagens das amostras, é aplicado o pré-processamento o qual pre
 
 > You can install any missing dependencies with pip.
 
-## Installation
+### How to install
 
 Follow these steps to clone the repository and install the necessary dependencies:
 
 1. **Clone the repository**:
 
     ```
-    git clone https://github.com/username/repo_name.git
+    git clone https://github.com/ferreiradiego/maize-classification.git
     ```
 
 2. **Navigate into the cloned repository**:
 
     ```
-    cd repo_name
+    cd maize-classification
     ```
 
-3. **Install the necessary dependencies**:
+3. **Create a virtual environment**:
+
+    ```
+    python3 -m venv env
+    ```
+
+4. **Activate the virtual environment**:
+    - On Windows:
+        ```
+        .\env\Scripts\activate
+        ```
+    - On Unix or MacOS:
+        ```
+        source env/bin/activate
+        ```
+
+5. **Install the necessary dependencies**:
 
     ```
     pip install -r requirements.txt
@@ -213,9 +180,11 @@ Follow these steps to clone the repository and install the necessary dependencie
 
 ## Running the Program
 
-The scripts required for data preprocessing and model training are located in the `Scripts` directory.
+The scripts required for data preprocessing and model training are located in the `src` directory.
 
-You can run Jupyter notebooks in either JupyterLab or Jupyter Notebook:
+You can run Jupyter notebooks in either JupyterLab or Jupyter Notebook
+
+
 
 
 
