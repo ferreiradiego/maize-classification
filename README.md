@@ -59,8 +59,8 @@ Após obter as imagens das amostras, é aplicado o pré-processamento o qual pre
 
 <table>
   <tr>
-    <td> <strong>RGB example</strong> </td>
-    <td> <strong>Grayscale example</strong> </td>
+    <td align="center"> <strong>RGB example</strong> </td>
+    <td align="center"> <strong>Grayscale example</strong> </td>
   </tr>
   <tr>
     <td><img src="img/dataset/rgb/a1_100_1.jpg" alt="RGB example"></td>
