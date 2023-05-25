@@ -6,11 +6,17 @@ Bem-vindo ao nosso repositório que aborda a classificação de grãos de milho 
 Este projeto utiliza técnicas de processamento digital de imagens para a classificação de grãos de milho da espécie Zea Mays por meio da coloração dos grãos.
 
 ## Conteúdos
-Scripts: Contains Python scripts for data preprocessing, model training and evaluation.
-Notebooks: Jupyter notebooks for exploratory data analysis, model development and data visualization.
-Data: The directory where the datasets used in this project are stored.
+
+- Scripts: Contains Python scripts for data preprocessing, model training and evaluation.
+- Notebooks: Jupyter notebooks for exploratory data analysis, model development and data visualization.
+- Data: The directory where the datasets used in this project are stored.
 
 ## Getting Started
+
+### Obtenção das imagens para o [dataset](img/dataset/)
+
+![setup_frontView](img/aquisition_device/setup_frontView.jpg)
+
 ### Dependencies
 - Python 3.7+
 - NumPy
