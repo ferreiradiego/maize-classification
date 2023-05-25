@@ -32,7 +32,22 @@ As dimensões da caixa são 30x30x30 cm, são utilizadas duas lâmpadas LED de 1
 
 O código a ser carregado para o ESP-32 CAM é [aquisition_device](src/aquisition_device/).
 
-### Installing
+### Pré-processamento
+
+Após obter as imagens das amostras, é aplicado o pré-processamento o qual prepara e rotula as imagens para a etapa de criação de modelos e da classificação
+
+<div style="display: flex; justify-content: space-around;">
+    <figure>
+        <img src="img/dataset/rgb/a1_100_1.jpg" alt="RGB example" width="" height="300">
+        <figcaption>Front View Setup</figcaption>
+    </figure>
+    <figure>
+        <img src="img/dataset/gray/a1_100_1.jpg" alt="Grayscale example" width="" height="300">
+        <figcaption>Top View Setup</figcaption>
+    </figure>
+</div>
+
+## Installing
 
 ### Dependencies
 - Python 3.7+
