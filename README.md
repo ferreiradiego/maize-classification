@@ -8,7 +8,46 @@ Este projeto utiliza técnicas de processamento digital de imagens para a classi
 ## Conteúdos
 
 ### Listas de contéudos do repositório
-<table>
+
+<table style="width:100%; border:1px solid black;">
+    <thead>
+        <tr>
+            <th style="text-align:center; border:1px solid black;"><strong>Folder</strong></th>
+            <th style="text-align:center; border:1px solid black;"><strong>Content</strong></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="border:1px solid black;">img</td>
+            <td style="border:1px solid black;">
+                <ul>
+                    <li>aquisition_device: images of the acquisition device</li>
+                    <li>dataset: image database, in grayscale and in RGB, both without background</li>
+                </ul>
+            </td>
+        </tr>
+        <tr>
+            <td style="border:1px solid black;">src</td>
+            <td style="border:1px solid black;">
+                <ul>
+                    <li>Python and Jupyter Notebook code for preprocessing, model creation, and sample classification</li>
+                    <li><strong>aquisition_device</strong>: PlatformIo project in C/C++ to load on ESP-32 CAM</li>
+                    <li><strong>tools</strong>: various functions for preprocessing and for the main code</li>
+                </ul>
+            </td>
+        </tr>
+        <tr>
+            <td style="border:1px solid black;">resources</td>
+            <td style="border:1px solid black;">
+                Dataset in dataframe format and classification results
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+
+
+<!-- <table>
   <tr>
     <td align="center"> <strong>folder</strong> </td>
     <td align="center"> <strong>content</strong> </td>
@@ -41,7 +80,7 @@ Este projeto utiliza técnicas de processamento digital de imagens para a classi
     </td>
   </tr>
 
-</table>
+</table> -->
 
 ### Dataset
 
@@ -137,15 +176,16 @@ Após obter as imagens das amostras, é aplicado o pré-processamento o qual pre
 
 ### Dependencies
 - Python 3.7+
-- NumPy
-- Pandas
-- Scikit-learn
-- Matplotlib
-- Plotly
-- Seaborn
-- OpenCV
-- Pandas
-- Numpy
+- [NumPy](https://numpy.org/)
+- [Pandas](https://pandas.pydata.org/)
+- [Scikit-learn](https://scikit-learn.org/)
+- [Matplotlib](https://matplotlib.org/)
+- [Plotly](https://plotly.com/)
+- [Seaborn](https://seaborn.pydata.org/)
+- [OpenCV](https://opencv.org/)
+- [Pandas](https://pandas.pydata.org/)
+- [NumPy](https://numpy.org/)
+
 
 > You can install any missing dependencies with pip.
 
