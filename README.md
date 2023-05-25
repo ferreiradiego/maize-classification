@@ -1,6 +1,6 @@
 # Classification of defects in Zea Mays corn grain samples
 
-Welcome to our repository which tackles corn grain classification using Digital Image Processing (DIP). This repository contains scripts, notebooks, a dataset, and a code for image acquisition using an ESP-32 CAM module.
+Welcome to our repository which tackles corn grain classification using Digital Image Processing (DIP). This repository contains scripts, notebooks, a dataset, and a code for image acquisition using an [ESP-32 CAM module](https://www.espressif.com/en/news/ESP32_CAM).
 
 ## Description
 This project uses digital image processing techniques for the classification of corn grains of the Zea Mays species through the color of the grains.
@@ -104,11 +104,11 @@ The dimensions of the box are 30x30x30 cm. Two 12 W LED lamps are used for the l
 </table>
 
 
-O código a ser carregado para o ESP-32 CAM é [aquisition_device](src/aquisition_device/).
+The code to be loaded into the ESP-32 CAM is [aquisition_device](src/aquisition_device/).
 
-### Pré-processamento
+### Preprocessing
 
-Após obter as imagens das amostras, é aplicado o pré-processamento o qual prepara e rotula as imagens para a etapa de criação de modelos e da classificação. Na sequência são apresentadas as imagens resultantes do pré-processamento, sendo a imagem grayscale utilizada para a classificação.
+After obtaining the images of the samples, preprocessing is applied, which prepares and labels the images for the model creation and classification stages. The resulting images from the preprocessing are shown below, with the grayscale image being used for classification.
 
 <table>
   <tr>
@@ -185,11 +185,8 @@ The scripts required for data preprocessing and model training are located in th
 You can run Jupyter notebooks in either JupyterLab or Jupyter Notebook
 
 
-
-
-
-### Contributing
+<!-- ### Contributing
 We would love your contributions! Please read CONTRIBUTING.md for details on our code of conduct, and the process for submitting pull requests.
 
 ### License
-This project is licensed under the MIT License - see the LICENSE file for details.
+This project is licensed under the MIT License - see the LICENSE file for details. VER ISSO -->
