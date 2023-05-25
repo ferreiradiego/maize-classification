@@ -84,8 +84,8 @@ for ratio in train_ratio:
             df_train = create_dataframes(train_filenames, dataset_path)
             df_test = create_dataframes(test_filenames, dataset_path)
 
-            # Normalize the 'ratio_80to255_to_1to80' feature in the train and test datasets. The normalization threshold is specified
-            df_train, df_test = normalize_dataset(df_train, df_test, 'ratio_80to255_to_1to80', thresh_normalization)
+            # Normalize the 'ratio_80to255_by_1to80' feature in the train and test datasets. The normalization threshold is specified
+            df_train, df_test = normalize_dataset(df_train, df_test, 'ratio_80to255_by_1to80', thresh_normalization)
 
             # Summarize the train dataframe by grouping it by grain_quantity and defect_percentage and calculating summary statistics to generate the model
             df_train_model = summarize_train_data(df_train)
@@ -104,7 +104,7 @@ for ratio in train_ratio:
 
             # Estimate the percentage of defects in the test dataset based on the number of grains and ratio
             df_test['estimated_defect_percentage'] = df_test.apply(lambda row: estimate_defect_percentage(row['grain_quantity'], 
-                                                                                                           row['normalized_ratio_80to255_to_1to80'], df_train_model), axis=1)
+                                                                                                           row['normalized_ratio_80to255_by_1to80'], df_train_model), axis=1)
 
             # Calculate the error in the estimated defect percentage
             df_test['error_defects'] = df_test['estimated_defect_percentage'] - df_test['defect_percentage']
