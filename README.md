@@ -19,14 +19,15 @@ As imagens ilustram o disposito de aquisição, sendo que os grãos sãos inseri
 
 As dimensões da caixa são 30x30x30 cm, são utilizadas duas lâmpadas LED de 12 W para o sistema de iluminação.
 
+
 <div style="display: flex; justify-content: space-around;">
     <figure>
-        <img src="img/aquisition_device/setup_frontView.jpg" alt="front view setup" width="" height="300">
-        <figcaption>Front View Setup</figcaption>
+        <figcaption><strong>Front View Setup</strong></figcaption>
+        <img src="img/aquisition_device/setup_frontView.jpg" alt="Front View Setup" style="width: auto; height: 300px;">
     </figure>
     <figure>
-        <img src="img/aquisition_device/setup_topView.jpg" alt="top view setup" width="" height="300">
-        <figcaption>Top View Setup</figcaption>
+        <figcaption><strong>Top View Setup</strong></figcaption>
+        <img src="img/aquisition_device/setup_topView.jpg" alt="Top View Setup" style="width: auto; height: 300px;">
     </figure>
 </div>
 
@@ -34,18 +35,19 @@ O código a ser carregado para o ESP-32 CAM é [aquisition_device](src/aquisitio
 
 ### Pré-processamento
 
-Após obter as imagens das amostras, é aplicado o pré-processamento o qual prepara e rotula as imagens para a etapa de criação de modelos e da classificação
+Após obter as imagens das amostras, é aplicado o pré-processamento o qual prepara e rotula as imagens para a etapa de criação de modelos e da classificação. Na sequência são apresentadas as imagens resultantes do pré-processamento, sendo a imagem grayscale utilizada para a classificação.
 
 <div style="display: flex; justify-content: space-around;">
     <figure>
-        <img src="img/dataset/rgb/a1_100_1.jpg" alt="RGB example" width="" height="300">
-        <figcaption>Front View Setup</figcaption>
+        <figcaption><strong>RGB example</strong></figcaption>
+        <img src="img/dataset/rgb/a1_100_1.jpg" alt="RGB example" style="width: auto; height: 270px;">
     </figure>
     <figure>
-        <img src="img/dataset/gray/a1_100_1.jpg" alt="Grayscale example" width="" height="300">
-        <figcaption>Top View Setup</figcaption>
+        <figcaption><strong>Grayscale example</strong></figcaption>
+        <img src="img/dataset/gray/a1_100_1.jpg" alt="Grayscale example" style="width: auto; height: 270px;">
     </figure>
 </div>
+
 
 ## Installing
 
