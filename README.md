@@ -49,7 +49,7 @@ O dataset possuem no total 1314 diferentes imagens, sendo que estão presentes e
 
 Os rotulos da images indentificam os percentuais de defeitos e a quantidade de grãos em cada amostra.
 
-<table style="width:100%; border:1px solid black;">
+<!-- <table style="width:100%; border:1px solid black;">
     <caption>Descrição dos itens de cada rótulo de imagem</caption>
     <thead>
         <tr>
@@ -76,6 +76,38 @@ Os rotulos da images indentificam os percentuais de defeitos e a quantidade de g
         <tr>
             <td style="border:1px solid black;">terceiro</td>
             <td style="border:1px solid black;">Número da imagem, para cada percentual de defeito e quantidade de grãos têm-se 20 imagens. Amostras com grãos sadios têm quantidades variadas de imagens.</td>
+        </tr>
+    </tbody>
+</table> -->
+
+
+<table style="width:100%; border:1px solid black;">
+    <caption>Description of items for each image label</caption>
+    <thead>
+        <tr>
+            <th style="text-align:center; border:1px solid black;">Item</th>
+            <th style="text-align:center; border:1px solid black;">Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="border:1px solid black;">first</td>
+            <td style="border:1px solid black;">
+                - a1 are samples with 30% of defective grains<br>
+                - a2 are samples with 25% of defective grains<br>
+                - a3 are samples with 20% of defective grains<br>
+                - a4 are samples with 15% of defective grains<br>
+                - a5 are samples with 10% of defective grains<br>
+                - a6 to a11 are samples with all healthy grains
+            </td>
+        </tr>
+        <tr>
+            <td style="border:1px solid black;">second</td>
+            <td style="border:1px solid black;">Quantity of grains: 50, 60, 70, 80, 90 and 100</td>
+        </tr>
+        <tr>
+            <td style="border:1px solid black;">third</td>
+            <td style="border:1px solid black;">Image number, for each defect percentage and grain quantity there are 20 images. Samples with healthy grains have varied quantities of images.</td>
         </tr>
     </tbody>
 </table>
