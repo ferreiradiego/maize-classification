@@ -5,8 +5,6 @@ import pandas as pd
 import random
 import seaborn as sns
 from sklearn.metrics import confusion_matrix, classification_report, ConfusionMatrixDisplay, accuracy_score
-# import plotly.express as px
-# import plotly.graph_objects as go
 import matplotlib.pyplot as plt
 
 
@@ -58,54 +56,54 @@ def create_dataframes(filenames, path_to_images):
     for file_name in filenames:
         img_gray = cv2.imread(path_to_images + file_name, cv2.IMREAD_GRAYSCALE)
 
-        percentual_defeitos = {'a1_': 0.30, 'a2_': 0.25, 'a3_': 0.20, 'a4_': 0.15, 'a5_': 0.10}.get(file_name[:3], 0.00)
+        defect_percentage = {'a1_': 0.30, 'a2_': 0.25, 'a3_': 0.20, 'a4_': 0.15, 'a5_': 0.10}.get(file_name[:3], 0.00)
 
         mask1 = cv2.inRange(img_gray, 1, 80)
         mask2 = cv2.inRange(img_gray, 80, 256)
 
         npixels_1to255, npixels_1to80, npixels_80to255 = cv2.countNonZero(mask1 | mask2), cv2.countNonZero(mask1), cv2.countNonZero(mask2)
 
-        qtde_graos = int(file_name.split("_")[1])
+        grain_quantity = int(file_name.split("_")[1])
 
-        new_row_gray = {'nome_imagem': file_name, 'qtde_graos': qtde_graos, 'percentual_defeitos': percentual_defeitos,
-                        'npixels_1a255': npixels_1to255, 'npixels_1a80': npixels_1to80, 'npixels_80a255': npixels_80to255}
+        new_row_gray = {'image_name': file_name, 'grain_quantity': grain_quantity, 'defect_percentage': defect_percentage,
+                        'npixels_1to255': npixels_1to255, 'npixels_1to80': npixels_1to80, 'npixels_80to255': npixels_80to255}
         dfs_gray.append(pd.DataFrame(new_row_gray, index=[0]))
 
     df_gray = pd.concat(dfs_gray, ignore_index=True)
 
-    df_gray['ratio_80a255_por_1a80'] = df_gray['npixels_80a255']/df_gray['npixels_1a80']
-    ratio_good = df_gray.loc[df_gray['percentual_defeitos'] == 0.00, 'ratio_80a255_por_1a80'].mean()
-    df_gray['ratio_80a255_por_1a80'] /= ratio_good
+    df_gray['ratio_80to255_to_1to80'] = df_gray['npixels_80to255']/df_gray['npixels_1to80']
+    ratio_good = df_gray.loc[df_gray['defect_percentage'] == 0.00, 'ratio_80to255_to_1to80'].mean()
+    df_gray['ratio_80to255_to_1to80'] /= ratio_good
 
-    df_gray['npixels_1a255_por_grao'] = (df_gray['npixels_1a255']/df_gray['qtde_graos']).astype(int)
+    df_gray['npixels_1to255_per_grain'] = (df_gray['npixels_1to255']/df_gray['grain_quantity']).astype(int)
 
     return df_gray
 
 def normalize_dataset(df_train, df_test, feature_name, ratio_to_be_filtered = 0.0):
 
-    good_grain_stats = df_train.query('percentual_defeitos == 0.0')[feature_name].agg(['mean', 'std'])
+    good_grain_stats = df_train.query('defect_percentage == 0.0')[feature_name].agg(['mean', 'std'])
 
-    df_train[f'{feature_name}_normalizado'] = abs(good_grain_stats['mean'] - df_train[feature_name])/good_grain_stats['std']
-    df_test[f'{feature_name}_normalizado'] = abs(good_grain_stats['mean'] - df_test[feature_name])/good_grain_stats['std']
+    df_train[f'normalized_{feature_name}'] = abs(good_grain_stats['mean'] - df_train[feature_name])/good_grain_stats['std']
+    df_test[f'normalized_{feature_name}'] = abs(good_grain_stats['mean'] - df_test[feature_name])/good_grain_stats['std']
     
     if ratio_to_be_filtered != 0.0:
-        df_train.loc[df_train['percentual_defeitos'] == 0, :] = df_train.query(f'{feature_name}_normalizado < {ratio_to_be_filtered}')
-        df_test.loc[df_test['percentual_defeitos'] == 0, :] = df_test.query(f'{feature_name}_normalizado < {ratio_to_be_filtered}')
+        df_train.loc[df_train['defect_percentage'] == 0, :] = df_train.query(f'normalized_{feature_name} < {ratio_to_be_filtered}')
+        df_test.loc[df_test['defect_percentage'] == 0, :] = df_test.query(f'normalized_{feature_name} < {ratio_to_be_filtered}')
 
         df_train = df_train.dropna()
         df_test = df_test.dropna()
 
     return df_train, df_test
 
-def summarize_train_data(df_train, groupby_cols=['qtde_graos', 'percentual_defeitos'], summary_col='ratio_80a255_por_1a80_normalizado'):
+def summarize_train_data(df_train, groupby_cols=['grain_quantity', 'defect_percentage'], summary_col='normalized_ratio_80to255_to_1to80'):
     return df_train.groupby(groupby_cols)[summary_col].describe()[['mean', 'std']].reset_index()
 
 # Define a function to calculate the average number of pixels with values between 1 and 255 per grain
 def calculate_avg_pixels_per_grain(df):
     # Query the DataFrame to get only the grains with 0% defects
-    df_good_grains = df.query('percentual_defeitos == 0.0')
+    df_good_grains = df.query('defect_percentage == 0.0')
     # Calculate the mean number of pixels with values between 1 and 255 per grain
-    avg_pixels_1a255_per_grain = df_good_grains['npixels_1a255_por_grao'].mean()
+    avg_pixels_1a255_per_grain = df_good_grains['npixels_1to255_per_grain'].mean()
     # Return the result
     return avg_pixels_1a255_per_grain
 
@@ -127,12 +125,12 @@ def estimate_number_of_grains(calculated):
 
     return 100
 
-def estimate_defect_percentage(qtde_graos, ratio, model):
+def estimate_defect_percentage(grain_quantity, ratio, model):
 
-    diff = abs(model.query(f'qtde_graos == {qtde_graos}')['mean'] - ratio)
+    diff = abs(model.query(f'grain_quantity == {grain_quantity}')['mean'] - ratio)
     min_index = diff.idxmin()
 
-    return model.loc[min_index, 'percentual_defeitos']
+    return model.loc[min_index, 'defect_percentage']
 
 def check_quality(percent, threshold = 0.15):
     if percent <= threshold:
@@ -146,31 +144,28 @@ def generate_confusion_matrix_and_classification_metrics(classification_results_
 
     if classification_type == 'n_grains':
         # Obtain the actual and predicted values for grains
-        y_true = classification_results_df['qtde_graos'].copy()
-        y_pred = classification_results_df['qtde_graos_estimado'].copy()
+        y_true = classification_results_df['grain_quantity'].copy()
+        y_pred = classification_results_df['estimated_grain_quantity'].copy()
 
     elif classification_type == 'defect_stratified':
 
-        df = classification_results_df.loc[classification_results_df['erro_graos'] == 0.0, :].copy()
+        df = classification_results_df.loc[classification_results_df['error_grain'] == 0.0, :].copy()
         
         # Obtain the actual and predicted values for defects percentage
-        y_true = (df['percentual_defeitos'] * 100).copy().astype(int)
-        y_pred = (df['percentual_defeitos_estimado'] * 100).copy().astype(int)
+        y_true = (df['defect_percentage'] * 100).copy().astype(int)
+        y_pred = (df['estimated_defect_percentage'] * 100).copy().astype(int)
 
     elif classification_type == 'defect_thresholded':
 
-        df = classification_results_df.loc[classification_results_df['erro_graos'] == 0.0, :].copy()
+        df = classification_results_df.loc[classification_results_df['error_grain'] == 0.0, :].copy()
 
-        y_true = df['qualidade'].copy()
-        y_pred = df['qualidade_estimado'].copy()
+        y_true = df['quality'].copy()
+        y_pred = df['estimated_quality'].copy()
         
     else:
         raise ValueError("Invalid classification_type parameter. Must be 'grains' or 'defects'.")
 
     cm = confusion_matrix(y_true, y_pred, normalize='true')
-    # cm = (cm/cm.sum()).round(2)
-    # cm = cm.round(2)
-    # cm = confusion_matrix(y_true, y_pred)
 
     classification_report_dict = classification_report(y_true, y_pred, target_names=class_names, output_dict=True)
 
@@ -199,16 +194,9 @@ def export_confusion_matrix_as_image(confusion_matrix: np.ndarray, class_names: 
     sns.heatmap(cm_df, annot=True, fmt='g', cmap='YlGnBu', cbar=False)
     plt.xlabel(labels[0])
     plt.ylabel(labels[1])
-    # plt.title(image_name)
 
-    # print(class_names)
-
-    # save plot as PNG file
-    # plt.savefig(image_name, dpi=300, bbox_inches='tight')
     plt.savefig(f'{image_name}', dpi=300, bbox_inches='tight')
 
-    # show plot
-    # plt.show()
     plt.close()
 
 def cross_validation(train_ratio: list, thresh_good: list, classification_types: dict, iterations: range, classification_metrics_results: dict, confusion_matrices: dict):
