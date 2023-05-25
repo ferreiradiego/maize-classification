@@ -7,9 +7,40 @@ Este projeto utiliza técnicas de processamento digital de imagens para a classi
 
 ## Conteúdos
 
-- Scripts: Contains Python scripts for data preprocessing, model training and evaluation.
-- Notebooks: Jupyter notebooks for exploratory data analysis, model development and data visualization.
-- Data: The directory where the datasets used in this project are stored.
+<table>
+  <tr>
+    <td align="center"> <strong>folder</strong> </td>
+    <td align="center"> <strong>content</strong> </td>
+  </tr>
+  <tr>
+    <td>img</td>
+    <td>
+        <ul>
+            <li>aquisition_device: imagens do dispositivo de aquisição</li>
+            <li>dataset: banco de dados de imagens, em tons de cinza e em rgb, ambas sem fundo</li>
+        </ul>
+    </td>
+  </tr>
+
+  <tr>
+    <td>src</td>
+    <td>
+        <ul>
+            <li>códigos em Python e Jupyter Notebook para pré-processamento, criação dos modelos e classificação das amostras </li>
+            <li><strong>aquisition_device</strong>: projeto do PlatformIo em C/C++ para carregar no ESP-32 CAM</li>
+            <li><strong>tools</strong>: funções diversas para o pré-processamento e para o código principal</li>
+        </ul>
+    </td>
+  </tr>
+
+  <tr>
+    <td>resources</td>
+    <td>
+        dataset em formato de dataframe e resultados da classificação
+    </td>
+  </tr>
+
+</table>
 
 ## Getting Started
 
