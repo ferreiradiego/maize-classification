@@ -48,16 +48,14 @@ Após obter as imagens das amostras, é aplicado o pré-processamento o qual pre
     </figure>
 </div> -->
 
-<div style="display: flex; justify-content: space-around;">
-    <figure>
-        <figcaption><strong>RGB example</strong></figcaption>
-        <img src="img/dataset/rgb/a1_100_1.jpg" alt="RGB example" style="width: auto; height: 270px;">
-    </figure>
-    <figure>
-        <figcaption><strong>Grayscale example</strong></figcaption>
-        <img src="img/dataset/gray/a1_100_1.jpg" alt="Grayscale example" style="width: auto; height: 270px;">
-    </figure>
-</div>
+**RGB example**
+
+![RGB example](img/dataset/rgb/a1_100_1.jpg)
+
+**Grayscale example**
+
+![Grayscale example](img/dataset/gray/a1_100_1.jpg)
+
 
 
 ## Installing
