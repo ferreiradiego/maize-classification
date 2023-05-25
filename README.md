@@ -15,12 +15,10 @@ Este projeto utiliza técnicas de processamento digital de imagens para a classi
 
 ### Obtenção das imagens para o [dataset](img/dataset/)
 
-<!-- ![setup_frontView](img/aquisition_device/setup_frontView.jpg) -->
-<img src="img/aquisition_device/setup_frontView.jpg" alt="alt text" width="500" height="">
-
-
-<!-- ![setup_topView](img/aquisition_device/setup_topView.jpg) -->
-<img src="img/aquisition_device/setup_topView.jpg" alt="alt text" width="500" height="">
+<div>
+    <img src="img/aquisition_device/setup_frontView.jpg" alt="front view setup" width="" height="300">
+    <img src="img/aquisition_device/setup_topView.jpg" alt="top view setup" width="" height="300">
+</div>
 
 ### Dependencies
 - Python 3.7+
