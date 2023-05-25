@@ -189,20 +189,35 @@ Após obter as imagens das amostras, é aplicado o pré-processamento o qual pre
 
 > You can install any missing dependencies with pip.
 
-Clone the GitHub repository and install the dependencies.
+## Installation
 
-bash
-Copy code
-git clone https://github.com/username/repo_name.git
-cd repo_name
-pip install -r requirements.txt
-Executing Program
-Run the scripts in the Scripts directory for data preprocessing and model training.
-Jupyter notebooks can be run in JupyterLab or Jupyter Notebook.
-bash
-Copy code
-jupyter notebook
-Then navigate to the Notebooks directory.
+Follow these steps to clone the repository and install the necessary dependencies:
+
+1. **Clone the repository**:
+
+    ```
+    git clone https://github.com/username/repo_name.git
+    ```
+
+2. **Navigate into the cloned repository**:
+
+    ```
+    cd repo_name
+    ```
+
+3. **Install the necessary dependencies**:
+
+    ```
+    pip install -r requirements.txt
+    ```
+
+## Running the Program
+
+The scripts required for data preprocessing and model training are located in the `Scripts` directory.
+
+You can run Jupyter notebooks in either JupyterLab or Jupyter Notebook:
+
+
 
 ### Contributing
 We would love your contributions! Please read CONTRIBUTING.md for details on our code of conduct, and the process for submitting pull requests.
