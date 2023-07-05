@@ -113,8 +113,8 @@ for ratio in train_ratio:
             classification_results_df = df_test[['grain_quantity', 'defect_percentage', 'estimated_grain_quantity', 'estimated_defect_percentage', 'error_grain']].copy()
 
             # Check the quality (healthy or defective) according to the parameterized threshold
-            classification_results_df['quality'] = (classification_results_df['defect_percentage'].apply(check_quality, thresh)).astype(int)
-            classification_results_df['estimated_quality'] = (classification_results_df['estimated_defect_percentage'].apply(check_quality, thresh)).astype(int)
+            classification_results_df['quality'] = classification_results_df['defect_percentage'].apply(check_quality, args=(thresh,)).astype(int)
+            classification_results_df['estimated_quality'] = classification_results_df['estimated_defect_percentage'].apply(check_quality, args=(thresh,)).astype(int)
             
             # Iterate over each classification type and get the classification results
             for classification_type in classification_types:
